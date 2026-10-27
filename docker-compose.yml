@@ -1,0 +1,22 @@
+services:
+  dev-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: metanode-finsdk-dev
+    ports:
+      # connect-wallet
+      - "6005:6005"
+      # blockchain-bridge
+      - "6001:6001"
+      # crypto-vault
+      - "6002:6002"
+      # file-processor
+      - "6003:6003"
+      # fiai-sdk
+      - "6004:6004"
+    volumes:
+      - .:/app
+      - /app/node_modules # Tránh ghi đè node_modules từ host vào container
+    environment:
+      - NODE_ENV=development

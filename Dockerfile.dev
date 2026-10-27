@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+# Cài đặt pnpm và git
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN apk add --no-cache git && corepack enable
+
+WORKDIR /app
+
+# Copy package.json và pnpm-lock.yaml trước
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml turbo.json ./
+
+# Cài đặt dependencies (mount node_modules bên ngoài qua docker-compose nên bước này chỉ cần thiết nếu không mount)
+# RUN pnpm install
+
+# Command mặc định
+CMD ["sh", "-c", "pnpm install && pnpm turbo run dev --filter connect-wallet --filter \"./frames/*\""]

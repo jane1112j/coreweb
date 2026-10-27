@@ -1,0 +1,4 @@
+packages:
+  - 'frames/*'
+  - 'packages/*'
+  - 'apps/*'

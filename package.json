@@ -1,0 +1,37 @@
+{
+  "name": "metanode-finsdk",
+  "private": true,
+  "scripts": {
+    "preinstall": "node -e \"const ua=process.env.npm_config_user_agent||'';if(!/pnpm\\//.test(ua)){console.error('\\nERROR: Use pnpm only. Do not run npm/yarn — they break this monorepo (Windows EPERM /.ignored).\\n  Correct: pnpm install\\n');process.exit(1)}\"",
+    "build": "cross-env NODE_ENV=production turbo run build",
+    "dev": "cross-env NODE_ENV=development turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
+    "@eslint-react/eslint-plugin": "^5.7.2",
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.0",
+    "prettier": "^3.7.4",
+    "turbo": "^2.9.9",
+    "typescript": "5.9.2",
+    "vite-plugin-pwa": "^0.21.1"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "pnpm": {
+    "overrides": {
+      "esbuild": "0.25.12"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
